@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using System.Windows.Controls;
 
 namespace TestApp.Flowchart
 {
@@ -44,7 +45,32 @@ namespace TestApp.Flowchart
 			}
 		}
 
-		public FlowNode(NodeKinds kind)
+
+        private UserControl _subControl;
+        public UserControl SubControl
+        {
+            get { return _subControl; }
+            set
+            {
+                _subControl = value;
+                //OnPropertyChanged("SubControl");
+            }
+        }
+
+
+        private List<FlowNode> _listFlowNode = new List<FlowNode>();
+        public List<FlowNode> ListFlowNode
+        {
+            get { return _listFlowNode; }
+            //set
+            //{
+            //    _listFlowNode = value;
+            //    //OnPropertyChanged("SubControl");
+            //}
+        }
+
+
+        public FlowNode(NodeKinds kind)
 		{
 			Kind = kind;
 		}
@@ -87,9 +113,24 @@ namespace TestApp.Flowchart
             }
 		}
 
-		#region INotifyPropertyChanged Members
+        public void AddNode(FlowNode node)
+        {
+            _listFlowNode.Add(node); 
+        }
 
-		public event PropertyChangedEventHandler PropertyChanged;
+        public void RemoveNode(FlowNode node)
+        {
+            _listFlowNode.Remove(node);
+        }
+
+        public void ClearNodes()
+        {
+            _listFlowNode.Clear();
+        }
+
+        #region INotifyPropertyChanged Members
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
 		protected void OnPropertyChanged(string name)
 		{

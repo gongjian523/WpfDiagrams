@@ -157,6 +157,7 @@ namespace TestApp.Flowchart
             else if (node.Kind == NodeKinds.ConstantPayload)
             {
                 var cpn = new ConstantPayloadNode();
+                node.SubControl = cpn;
 
                 var ui = new Border();
                 ui.BorderThickness = new Thickness(0);
@@ -168,6 +169,7 @@ namespace TestApp.Flowchart
             if (node.Kind == NodeKinds.FlexiblePaylaod)
             {
                 var fpn= new FlexiblePayloadNode();
+                node.SubControl = fpn;
 
                 var ui = new Border();
                 ui.BorderThickness = new Thickness(0);
@@ -178,6 +180,7 @@ namespace TestApp.Flowchart
             else if (node.Kind == NodeKinds.Distribute)
             {
                 var dn = new DistributeNode();
+                node.SubControl = dn;
 
                 var ui = new Border();
                 ui.BorderThickness = new Thickness(0);
@@ -188,6 +191,7 @@ namespace TestApp.Flowchart
             else 
             {
                 var output = new OutputNode();
+                node.SubControl = output;
 
                 var ui = new Border();
                 ui.BorderThickness = new Thickness(0);
