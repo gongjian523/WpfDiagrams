@@ -39,10 +39,15 @@ namespace TestApp.Flowchart
 		{
 			foreach (NodeKinds nk in Enum.GetValues(typeof(NodeKinds)))
 			{
-				var node = new FlowNode(nk);
+                if (nk == NodeKinds.Action || nk == NodeKinds.Condition || nk == NodeKinds.End || nk == NodeKinds.Start)
+                {
+                    continue;
+                }
+
+                var node = new FlowNode(nk);
 				node.Text = nk.ToString();
 				var ui = Controller.CreateContent(node);
-				ui.Width = 60;
+				ui.Width = 100;
 				ui.Height = 30;
 				ui.Margin = new Thickness(5);
 				ui.Tag = nk;
@@ -84,23 +89,48 @@ namespace TestApp.Flowchart
 			end.Column = 2;
 			end.Text = "End";
 
-			model.Nodes.Add(start);
-			model.Nodes.Add(cond);
-			model.Nodes.Add(ac0);
-			model.Nodes.Add(ac1);
-			model.Nodes.Add(ac2);
-			model.Nodes.Add(end);
+            //model.Nodes.Add(start);
+            //model.Nodes.Add(cond);
+            //model.Nodes.Add(ac0);
+            //model.Nodes.Add(ac1);
+            //model.Nodes.Add(ac2);
+            //model.Nodes.Add(end);
 
-			model.Links.Add(new Link(start, PortKinds.Bottom, ac0, PortKinds.Top));
-			model.Links.Add(new Link(ac0, PortKinds.Bottom, cond, PortKinds.Top));
-			
-			model.Links.Add(new Link(cond, PortKinds.Bottom, ac1, PortKinds.Top) { Text = "True" });
-			model.Links.Add(new Link(cond, PortKinds.Right, end, PortKinds.Top) { Text = "False" });
+            //model.Links.Add(new Link(start, PortKinds.Bottom, ac0, PortKinds.Top));
+            //model.Links.Add(new Link(ac0, PortKinds.Bottom, cond, PortKinds.Top));
 
-			model.Links.Add(new Link(ac1, PortKinds.Bottom, ac2, PortKinds.Top));
-			model.Links.Add(new Link(ac2, PortKinds.Bottom, cond, PortKinds.Top));
+            //model.Links.Add(new Link(cond, PortKinds.Bottom, ac1, PortKinds.Top) { Text = "True" });
+            //model.Links.Add(new Link(cond, PortKinds.Right, end, PortKinds.Top) { Text = "False" });
 
-			return model;
+            //model.Links.Add(new Link(ac1, PortKinds.Bottom, ac2, PortKinds.Top));
+            //model.Links.Add(new Link(ac2, PortKinds.Bottom, cond, PortKinds.Top));
+
+            var cpn = new FlowNode(NodeKinds.ConstantPayload);
+            cpn.Row = 0;
+            cpn.Column = 0;
+
+            var fpn = new FlowNode(NodeKinds.FlexiblePaylaod);
+            fpn.Row = 2;
+            fpn.Column = 0;
+
+            var dn = new FlowNode(NodeKinds.Distribute);
+            dn.Row = 1;
+            dn.Column = 2;
+
+            var otn = new FlowNode(NodeKinds.Output);
+            otn.Row = 1;
+            otn.Column = 4;
+
+            model.Nodes.Add(otn);
+            model.Nodes.Add(cpn);
+            model.Nodes.Add(fpn);
+            model.Nodes.Add(dn);
+
+            model.Links.Add(new Link(cpn, PortKinds.Right, dn, PortKinds.Top));
+            model.Links.Add(new Link(fpn, PortKinds.Right, dn, PortKinds.Top));
+            model.Links.Add(new Link(dn, PortKinds.Right, otn, PortKinds.Top));
+
+            return model;
 		}
 
 		void Selection_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

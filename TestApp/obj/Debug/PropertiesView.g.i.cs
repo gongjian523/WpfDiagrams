@@ -9,7 +9,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Aga.Diagrams;
 using System;
 using System.Diagnostics;
 using System.Windows;

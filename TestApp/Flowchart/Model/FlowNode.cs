@@ -69,7 +69,22 @@ namespace TestApp.Flowchart
 					yield return PortKinds.Left;
 					yield return PortKinds.Right;
 					break;
-			}
+                case NodeKinds.ConstantPayload:
+                    yield return PortKinds.Right;
+                    break;
+                case NodeKinds.FlexiblePaylaod:
+                    yield return PortKinds.Right;
+                    break;
+                case NodeKinds.Distribute:
+                    //yield return PortKinds.Left;
+                    yield return PortKinds.Top;
+                    yield return PortKinds.Right;
+                    break;
+                case NodeKinds.Output:
+                    //yield return PortKinds.Left;
+                    yield return PortKinds.Top;
+                    break;
+            }
 		}
 
 		#region INotifyPropertyChanged Members
@@ -85,5 +100,7 @@ namespace TestApp.Flowchart
 		#endregion
 	}
 
-	enum NodeKinds { Start, End, Action, Condition }
+	enum NodeKinds { Start, End, Action, Condition, ConstantPayload, FlexiblePaylaod, Distribute, Output }
 }
+
+

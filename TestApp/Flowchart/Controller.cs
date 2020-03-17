@@ -11,6 +11,7 @@ using Aga.Diagrams.Controls;
 using System.Windows.Input;
 using System.ComponentModel;
 using System.Windows.Data;
+using TestApp.Flowchart.Controls;
 
 namespace TestApp.Flowchart
 {
@@ -25,7 +26,7 @@ namespace TestApp.Flowchart
 			{
 				_parent = parent;
 			}
-
+            
 			public void Dispose()
 			{
 				IsInprogress = false;
@@ -118,41 +119,83 @@ namespace TestApp.Flowchart
 			b.Source = node;
 			textBlock.SetBinding(TextBlock.TextProperty, b);
 
-			if (node.Kind == NodeKinds.Start || node.Kind == NodeKinds.End)
-			{
-				var ui = new Border();
-				ui.CornerRadius = new CornerRadius(15);
-				ui.BorderBrush = Brushes.Black;
-				ui.BorderThickness = new Thickness(1);
-				ui.Background = Brushes.Yellow;
-				ui.Child = textBlock;
-				return ui;
-			}
-			else if (node.Kind == NodeKinds.Action)
-			{
-				var ui = new Border();
-				ui.BorderBrush = Brushes.Black;
-				ui.BorderThickness = new Thickness(1);
-				ui.Background = Brushes.Lime; ;
-				ui.Child = textBlock;
-				return ui;
-			}
-			else
-			{
-				var ui = new Path();
-				ui.Stroke = Brushes.Black;
-				ui.StrokeThickness = 1;
-				ui.Fill = Brushes.Pink;
-				var converter = new GeometryConverter();
-				ui.Data = (Geometry)converter.ConvertFrom("M 0,0.25 L 0.5 0 L 1,0.25 L 0.5,0.5 Z");
-				ui.Stretch = Stretch.Uniform;
+            if (node.Kind == NodeKinds.Start || node.Kind == NodeKinds.End)
+            {
+                var ui = new Border();
+                ui.CornerRadius = new CornerRadius(15);
+                ui.BorderBrush = Brushes.Black;
+                ui.BorderThickness = new Thickness(1);
+                ui.Background = Brushes.Yellow;
+                ui.Child = textBlock;
+                return ui;
+            }
+            else if (node.Kind == NodeKinds.Action)
+            {
+                var ui = new Border();
+                ui.BorderBrush = Brushes.Black;
+                ui.BorderThickness = new Thickness(1);
+                ui.Background = Brushes.Lime; ;
+                ui.Child = textBlock;
+                return ui;
+            }
+            else if (node.Kind == NodeKinds.Condition)
+            {
+                var ui = new Path();
+                ui.Stroke = Brushes.Black;
+                ui.StrokeThickness = 1;
+                ui.Fill = Brushes.Pink;
+                var converter = new GeometryConverter();
+                ui.Data = (Geometry)converter.ConvertFrom("M 0,0.25 L 0.5 0 L 1,0.25 L 0.5,0.5 Z");
+                ui.Stretch = Stretch.Uniform;
 
-				var grid = new Grid();
-				grid.Children.Add(ui);
-				grid.Children.Add(textBlock);
+                var grid = new Grid();
+                grid.Children.Add(ui);
+                grid.Children.Add(textBlock);
 
-				return grid;
-			}
+                return grid;
+            }
+            else if (node.Kind == NodeKinds.ConstantPayload)
+            {
+                var cpn = new ConstantPayloadNode();
+
+                var ui = new Border();
+                ui.BorderThickness = new Thickness(0);
+                ui.Background = Brushes.LightBlue;
+                ui.Child = cpn;
+                return ui;
+            }
+            else
+            if (node.Kind == NodeKinds.FlexiblePaylaod)
+            {
+                var fpn= new FlexiblePayloadNode();
+
+                var ui = new Border();
+                ui.BorderThickness = new Thickness(0);
+                ui.Background = Brushes.LightBlue;
+                ui.Child = fpn;
+                return ui;
+            }
+            else if (node.Kind == NodeKinds.Distribute)
+            {
+                var dn = new DistributeNode();
+
+                var ui = new Border();
+                ui.BorderThickness = new Thickness(0);
+                ui.Background = Brushes.LightBlue;
+                ui.Child = dn;
+                return ui;
+            }
+            else 
+            {
+                var output = new OutputNode();
+
+                var ui = new Border();
+                ui.BorderThickness = new Thickness(0);
+                ui.Background = Brushes.LightBlue ;
+                ui.Child = output;
+                return ui;
+            }
+
 		}
 
 		private void CreatePorts(FlowNode node, Node item)
@@ -166,8 +209,9 @@ namespace TestApp.Flowchart
 				port.Visibility = Visibility.Visible;
 				port.VerticalAlignment = ToVerticalAligment(kind);
 				port.HorizontalAlignment = ToHorizontalAligment(kind);
-				port.CanAcceptIncomingLinks = kind == PortKinds.Top;
-				port.CanAcceptOutgoingLinks = !port.CanAcceptIncomingLinks;
+                port.CanAcceptIncomingLinks = kind == PortKinds.Top;
+                //port.CanAcceptIncomingLinks = kind == PortKinds.Right;
+                port.CanAcceptOutgoingLinks = !port.CanAcceptIncomingLinks;
 				port.Tag = kind;
 				port.Cursor = Cursors.Cross;
 				port.CanCreateLink = true;

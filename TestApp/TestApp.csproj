@@ -58,6 +58,8 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -86,6 +88,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Flowchart\Controls\ConstantPayloadNode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Flowchart\Controls\DistributeNode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Flowchart\Controls\FlexiblePayloadNode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Flowchart\Controls\OutputNode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Flowchart\FlowchartEditor.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -113,6 +131,18 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Flowchart\Controls\ConstantPayloadNode.xaml.cs">
+      <DependentUpon>ConstantPayloadNode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Flowchart\Controls\DistributeNode.xaml.cs">
+      <DependentUpon>DistributeNode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Flowchart\Controls\FlexiblePayloadNode.xaml.cs">
+      <DependentUpon>FlexiblePayloadNode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Flowchart\Controls\OutputNode.xaml.cs">
+      <DependentUpon>OutputNode.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

@@ -6,12 +6,15 @@
     xmlns:f="clr-namespace:TestApp.Flowchart"
     Title="WPF Diagrams" Width="800" Height="600">
     
-    <TabControl>
+    <!--<TabControl>
         <TabItem Header="Flowchart">
-            <f:FlowchartEditor/>
+            <f:FlowchartEditor Loaded="FlowchartEditor_Loaded"/>
         </TabItem>
         <TabItem Header="Shapes Editor">
             <s:ShapesEditor/>
         </TabItem>
-    </TabControl>
+    </TabControl>-->
+    <Grid>
+        <f:FlowchartEditor Loaded="FlowchartEditor_Loaded"/>
+    </Grid>
 </Window>

@@ -20,5 +20,10 @@ namespace TestApp
 		{
 			InitializeComponent();
 		}
-	}
+
+        private void FlowchartEditor_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+    }
 }

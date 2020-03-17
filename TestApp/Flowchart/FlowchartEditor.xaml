@@ -6,7 +6,7 @@
     <DockPanel>
         <StackPanel DockPanel.Dock="Left" Width="200" Margin="0,0,10,0">
             <StackPanel Margin="0,10,0,10">
-                <TextBlock Text="Toolbox:" Margin="0,0,0,10"/>
+                <TextBlock Text="工具箱:" Margin="0,0,0,10"/>
 				<Border BorderBrush="Black" BorderThickness="1">
    					<ItemsControl x:Name="_toolbox">
                         <ItemsControl.ItemsPanel>
@@ -19,7 +19,7 @@
 			</StackPanel>
 
             <StackPanel  Margin="0,10,0,10">
-                <TextBlock Text="Properties:" Margin="0,0,0,10"/>
+                <TextBlock Text="输出结果:" Margin="0,0,0,10"/>
 				<local:PropertiesView x:Name="_propertiesView" Height="200"/>
 			</StackPanel>
         </StackPanel>
