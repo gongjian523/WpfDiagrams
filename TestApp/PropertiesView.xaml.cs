@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
 using System.Reflection;
+using TestApp.Flowchart;
 
 namespace TestApp
 {
@@ -62,8 +63,22 @@ namespace TestApp
 			if (SelectedObject != null)
 			{
 				int row = 0;
-				foreach (var prop in SelectedObject.GetType().GetProperties().OrderBy( p => p.Name))
-				{
+
+                try
+                {
+                    if (((FlowNode)SelectedObject).Kind == NodeKinds.Output)
+                    {
+                        ((FlowNode)SelectedObject).ResultList();
+                    }
+                }
+                catch
+                {
+
+                }
+
+                //foreach (var prop in SelectedObject.GetType().GetProperties().OrderBy( p => p.Name))
+                foreach (var prop in SelectedObject.GetType().GetProperties())
+                {
 					var attr = prop.GetCustomAttributes(typeof(BrowsableAttribute), true);
 					if (attr.Length == 0 || (attr[0] as BrowsableAttribute).Browsable)
 					{
@@ -95,17 +110,18 @@ namespace TestApp
 			rowDef.Height = new GridLength(Math.Max(20, this.FontSize * 2));
 			_grid.RowDefinitions.Add(rowDef);
 
-			var tb = new TextBlock() { Text = prop.Name };
-			tb.Margin = new Thickness(4);
-			Grid.SetColumn(tb, 0);
-			Grid.SetRow(tb, _grid.RowDefinitions.Count - 1);
+			//var tb = new TextBlock() { Text = prop.Name };
+			//tb.Margin = new Thickness(4);
+			//Grid.SetColumn(tb, 0);
+			//Grid.SetRow(tb, _grid.RowDefinitions.Count - 1);
 
 			var ed = new TextBox();
 			ed.PreviewKeyDown += new KeyEventHandler(ed_KeyDown);
 			ed.Margin = new Thickness(0, 2, 14, 0);
 			ed.BorderThickness = new Thickness(0);
-			Grid.SetColumn(ed, 1);
-			Grid.SetRow(ed, _grid.RowDefinitions.Count - 1);
+            //Grid.SetColumn(ed, 1);
+            Grid.SetColumn(ed, 0);
+            Grid.SetRow(ed, _grid.RowDefinitions.Count - 1);
 
 			var line = new Line();
 			line.Style = (Style)Resources["gridHorizontalLineStyle"];
@@ -126,7 +142,7 @@ namespace TestApp
 			var template = (ControlTemplate)Resources["validationErrorTemplate"];
 			Validation.SetErrorTemplate(ed, template);
 
-			_grid.Children.Add(tb);
+			//_grid.Children.Add(tb);
 			_grid.Children.Add(ed);
 			_grid.Children.Add(line);
 		}

@@ -316,9 +316,9 @@ namespace TestApp.Flowchart
 				_model.Links.Remove((link as LinkBase).ModelElement as Link);
 				_model.Links.Add(
 					new Link((FlowNode)source.ModelElement, (PortKinds)sourcePort.Tag, 
-						(FlowNode)target.ModelElement, (PortKinds)targetPort.Tag)
-						);
-			}
+						(FlowNode)target.ModelElement, (PortKinds)targetPort.Tag));
+                ((FlowNode)target.ModelElement).AddNode((FlowNode)source.ModelElement);
+            }
 		}
 
 		public void ExecuteCommand(System.Windows.Input.ICommand command, object parameter)

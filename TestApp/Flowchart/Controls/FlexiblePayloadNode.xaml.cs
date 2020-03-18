@@ -23,5 +23,26 @@ namespace TestApp.Flowchart.Controls
         {
             InitializeComponent();
         }
+
+        public String Constant()
+        {
+            return _constTbl.Text;
+        }
+
+        public String Parameter()
+        {
+            if (_paraTbx.Text == null)
+                return "0";
+            else
+                return _paraTbx.Text;
+        }
+
+        public String Parameter2()
+        {
+            if (_para2Tbx.Text == null)
+                return "0";
+            else
+                return _para2Tbx.Text;
+        }
     }
 }

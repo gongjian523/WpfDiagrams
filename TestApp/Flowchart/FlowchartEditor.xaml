@@ -27,7 +27,7 @@
         <Border BorderBrush="Black" BorderThickness="1">
             <d:DiagramScrollView>
                 <d:DiagramView Name="_editor" AllowDrop="True"
-							   ShowGrid="True" GridCellSize="120,100" DocumentSize="2000,2000">
+							   ShowGrid="True" GridCellSize="144,120" DocumentSize="2000,2000">
                 </d:DiagramView>
             </d:DiagramScrollView>
         </Border>

@@ -19,10 +19,10 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
         <TextBlock  Grid.ColumnSpan="5" Text="可变负载" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBlock  Grid.Row="1" Text="1.4" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock  Grid.Row="1" Text="1.4" Name="_constTbl" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <TextBlock  Grid.Row="1" Grid.Column="1" Text="X" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBox  Grid.Row="1" Grid.Column="2"  Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBox  Grid.Row="1" Grid.Column="2"  Name="_paraTbx" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Width="15"/>
         <TextBlock  Grid.Row="1" Grid.Column="3" Text="X" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBox  Grid.Row="1" Grid.Column="4" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBox  Grid.Row="1" Grid.Column="4" Name="_para2Tbx" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Width="30"/>
     </Grid>
 </UserControl>

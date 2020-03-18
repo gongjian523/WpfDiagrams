@@ -23,5 +23,29 @@ namespace TestApp.Flowchart.Controls
         {
             InitializeComponent();
         }
+
+        public String Coefficient()
+        {
+            if (_coe1Tbx.Text == null)
+                return "0";
+            else
+                return _coe1Tbx.Text;
+        }
+
+        public String Coefficient2()
+        {
+            if (_coe2Tbx.Text == null)
+                return "0";
+            else
+                return _coe2Tbx.Text;
+        }
+
+        public String Coefficient3()
+        {
+            if (_coe3Tbx.Text == null)
+                return "0";
+            else
+                return _coe3Tbx.Text;
+        }
     }
 }

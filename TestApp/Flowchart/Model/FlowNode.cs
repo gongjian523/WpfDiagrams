@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 using System.Windows.Controls;
+using TestApp.Flowchart.Controls;
 
 namespace TestApp.Flowchart
 {
@@ -13,7 +14,8 @@ namespace TestApp.Flowchart
 		public NodeKinds Kind { get; private set; }
 
 		private int _column;
-		public int Column
+        [Browsable(false)]
+        public int Column
 		{
 			get { return _column; }
 			set 
@@ -24,7 +26,8 @@ namespace TestApp.Flowchart
 		}
 
 		private int _row;
-		public int Row
+        [Browsable(false)]
+        public int Row
 		{
 			get { return _row; }
 			set 
@@ -35,7 +38,8 @@ namespace TestApp.Flowchart
 		}
 
 		private string _text;
-		public string Text
+        [Browsable(false)]
+        public string Text
 		{
 			get { return _text; }
 			set
@@ -47,6 +51,7 @@ namespace TestApp.Flowchart
 
 
         private UserControl _subControl;
+        [Browsable(false)]
         public UserControl SubControl
         {
             get { return _subControl; }
@@ -59,6 +64,7 @@ namespace TestApp.Flowchart
 
 
         private List<FlowNode> _listFlowNode = new List<FlowNode>();
+        [Browsable(false)]
         public List<FlowNode> ListFlowNode
         {
             get { return _listFlowNode; }
@@ -67,6 +73,50 @@ namespace TestApp.Flowchart
             //    _listFlowNode = value;
             //    //OnPropertyChanged("SubControl");
             //}
+        }
+
+        private string  _result;
+        public string Result
+        {
+            get { return _result; }
+            set
+            {
+                _result = value;
+                OnPropertyChanged("Result");
+            }
+        }
+
+        private string _a;
+        public string A
+        {
+            get { return _a; }
+            set
+            {
+                _a = value;
+                OnPropertyChanged("A");
+            }
+        }
+
+        private string _b;
+        public string B
+        {
+            get { return _b; }
+            set
+            {
+                _b = value;
+                OnPropertyChanged("B");
+            }
+        }
+
+        private string _c;
+        public string C
+        {
+            get { return _c; }
+            set
+            {
+                _c = value;
+                OnPropertyChanged("C");
+            }
         }
 
 
@@ -126,6 +176,87 @@ namespace TestApp.Flowchart
         public void ClearNodes()
         {
             _listFlowNode.Clear();
+        }
+
+        public List<string> ResultList()
+        {     
+            List<string> list = new List<string>();
+
+            foreach (var dNode in _listFlowNode)
+            {
+                if(dNode.Kind != NodeKinds.Distribute)
+                {
+                    continue;
+                }
+
+                double result = 0;
+                string rltStr = "";
+
+                foreach (var node in dNode.ListFlowNode)
+                {
+                    string subStr = "";
+                    double subRst = 0;
+
+                    if (node.Kind == NodeKinds.ConstantPayload)
+                    {
+                        ConstantPayloadNode cpn = (ConstantPayloadNode)node.SubControl;
+
+                        double constant = Convert.ToDouble(cpn.Constant());
+                        double para = Convert.ToDouble(cpn.Parameter());
+                        subRst = constant * para;
+                        subStr = cpn.Constant() + "X" + cpn.Parameter();
+                    }
+                    else if (node.Kind == NodeKinds.FlexiblePaylaod)
+                    {
+                        FlexiblePayloadNode fpn = (FlexiblePayloadNode)node.SubControl;
+
+                        double constant = Convert.ToDouble(fpn.Constant());
+                        double para = Convert.ToDouble(fpn.Parameter());
+                        double para2 = Convert.ToDouble(fpn.Parameter2());
+
+                        subRst = constant * para * para2;
+                        subStr = fpn.Constant() + "X" + fpn.Parameter() + "X" + fpn.Parameter2();
+                    }
+
+                    result += subRst;
+                    if (rltStr == "")
+                    {
+                        rltStr = subStr;
+                    }
+                    else
+                    {
+                        rltStr = rltStr + "+" + subStr;
+                    }
+                }
+
+                rltStr = rltStr + "=" + result.ToString();
+
+                DistributeNode dn = (DistributeNode)dNode.SubControl;
+
+                string coeAStr = dn.Coefficient();
+                double rstA = result * Convert.ToDouble(coeAStr);
+                string strA = "A " +  result.ToString() + "X" + coeAStr + "= " + "" + rstA.ToString();
+
+                string coeBStr = dn.Coefficient2();
+                double rstB = result * Convert.ToDouble(coeBStr);
+                string strB = "B " +  result.ToString() + "X" + coeBStr + "= " + "" + rstB.ToString();
+
+                string coeCStr = dn.Coefficient3();
+                double rstC = result * Convert.ToDouble(coeCStr);
+                string strC = "C " + result.ToString() + "X" + coeCStr + "= " + "" + rstC.ToString();
+
+                list.Add(rltStr);
+                list.Add(strA);
+                list.Add(strB);
+                list.Add(strC);
+            }
+
+            _result = list[0];
+            _a = list[1];
+            _b = list[2];
+            _c = list[3];
+
+            return list;
         }
 
         #region INotifyPropertyChanged Members
