@@ -277,7 +277,14 @@ namespace TestApp.Flowchart
 			{
 				var nodes = _view.Selection.Select(p => p.ModelElement as FlowNode).Where(p => p != null);
 				var links = _view.Selection.Select(p => p.ModelElement as Link).Where(p => p != null);
-				_model.Nodes.RemoveRange(p => nodes.Contains(p));
+
+                var links1 = _model.Links.Where(p => links.Contains(p) || nodes.Contains(p.Target));
+                foreach(var link in links1)
+                {
+                    link.Target.RemoveNode(link.Target);
+                }
+
+                _model.Nodes.RemoveRange(p => nodes.Contains(p));
 				_model.Links.RemoveRange(p => links.Contains(p));
 				_model.Links.RemoveRange(p => nodes.Contains(p.Source) || nodes.Contains(p.Target));
 			}
