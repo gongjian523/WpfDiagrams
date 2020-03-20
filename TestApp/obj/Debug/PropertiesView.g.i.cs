@@ -99,7 +99,7 @@ namespace PayloadApp {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/TestApp;component/propertiesview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/PayloadApp;component/propertiesview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\PropertiesView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
