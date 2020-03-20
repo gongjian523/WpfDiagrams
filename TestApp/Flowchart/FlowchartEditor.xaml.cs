@@ -11,7 +11,7 @@ using Aga.Diagrams.Controls;
 using System.Windows.Media;
 using System.Windows.Input;
 
-namespace TestApp.Flowchart
+namespace PayloadApp.Flowchart
 {
 	public partial class FlowchartEditor : UserControl
 	{

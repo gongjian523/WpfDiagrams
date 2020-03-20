@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 
-namespace TestApp.Flowchart
+namespace PayloadApp.Flowchart
 {
 	class Link: INotifyPropertyChanged
 	{

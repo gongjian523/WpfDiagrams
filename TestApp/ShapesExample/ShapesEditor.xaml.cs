@@ -12,7 +12,7 @@ using Aga.Diagrams.Controls;
 using System.Windows.Media;
 using System.Windows.Input;
 
-namespace TestApp.ShapesExample
+namespace PayloadApp.ShapesExample
 {
 	/// <summary>
 	/// Interaction logic for ShapesEditor.xaml

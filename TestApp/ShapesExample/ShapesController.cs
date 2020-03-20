@@ -14,7 +14,7 @@ using Aga.Diagrams.Controls;
 using System.Windows.Input;
 using System.Windows.Data;
 
-namespace TestApp.ShapesExample
+namespace PayloadApp.ShapesExample
 {
 	class ShapesController : IDiagramController
 	{

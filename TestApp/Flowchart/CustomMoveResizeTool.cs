@@ -6,7 +6,7 @@ using Aga.Diagrams.Tools;
 using Aga.Diagrams;
 using System.Windows;
 
-namespace TestApp.Flowchart
+namespace PayloadApp.Flowchart
 {
 	class CustomMoveResizeTool: MoveResizeTool
 	{

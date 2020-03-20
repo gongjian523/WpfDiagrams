@@ -7,7 +7,7 @@ using Aga.Diagrams.Controls;
 using Aga.Diagrams;
 using System.Windows.Controls;
 
-namespace TestApp.Flowchart
+namespace PayloadApp.Flowchart
 {
 	public class OrthogonalLink : SegmentLink
 	{

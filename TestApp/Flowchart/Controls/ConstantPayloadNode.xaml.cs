@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TestApp.Flowchart.Controls
+namespace PayloadApp.Flowchart.Controls
 {
     /// <summary>
     /// ConstantPayloadNode.xaml 的交互逻辑
@@ -25,16 +25,25 @@ namespace TestApp.Flowchart.Controls
         }
 
         public String Constant()
-        {   
-            return _constTbl.Text;
+        {
+            return _constTbl.Text;         
         }
 
+        private string _parameter = "";
         public String Parameter()
         {
-            if (_paraTbx.Text == null)
+            if (_paraTbx.Text == null || _paraTbx.Text == "")
                 return "0";
             else
-                return _paraTbx.Text;
+            {
+                _parameter = _paraTbx.Text;
+                return _parameter;
+            }     
+        }
+
+        public void SetParameter()
+        {
+            _paraTbx.Text = _parameter;
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 
-namespace TestApp
+namespace PayloadApp
 {
 	/// <summary>
 	/// Interaction logic for App.xaml

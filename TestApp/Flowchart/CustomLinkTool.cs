@@ -8,7 +8,7 @@ using System.Windows;
 using Aga.Diagrams;
 using System.Windows.Controls;
 
-namespace TestApp.Flowchart
+namespace PayloadApp.Flowchart
 {
 	class CustomLinkTool: LinkTool
 	{

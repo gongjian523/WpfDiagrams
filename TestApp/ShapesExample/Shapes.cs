@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows;
 using System.ComponentModel;
 
-namespace TestApp.ShapesExample
+namespace PayloadApp.ShapesExample
 {
 	class ShapeBase: INotifyPropertyChanged
 	{

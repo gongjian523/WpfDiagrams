@@ -13,9 +13,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
 using System.Reflection;
-using TestApp.Flowchart;
+using PayloadApp.Flowchart;
 
-namespace TestApp
+namespace PayloadApp
 {
 	/// <summary>
 	/// Interaction logic for PropertiesView.xaml

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 using System.Windows.Controls;
-using TestApp.Flowchart.Controls;
+using PayloadApp.Flowchart.Controls;
 
-namespace TestApp.Flowchart
+namespace PayloadApp.Flowchart
 {
 	class FlowNode: INotifyPropertyChanged
 	{
@@ -273,6 +273,7 @@ namespace TestApp.Flowchart
 	}
 
 	enum NodeKinds { Start, End, Action, Condition, ConstantPayload, FlexiblePaylaod, Distribute, Output }
+
 }
 
 

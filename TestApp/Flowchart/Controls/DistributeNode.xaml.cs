@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TestApp.Flowchart.Controls
+namespace PayloadApp.Flowchart.Controls
 {
     /// <summary>
     /// DistributeNode.xaml 的交互逻辑

@@ -11,9 +11,9 @@ using Aga.Diagrams.Controls;
 using System.Windows.Input;
 using System.ComponentModel;
 using System.Windows.Data;
-using TestApp.Flowchart.Controls;
+using PayloadApp.Flowchart.Controls;
 
-namespace TestApp.Flowchart
+namespace PayloadApp.Flowchart
 {
 	class Controller : IDiagramController
 	{

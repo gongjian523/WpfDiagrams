@@ -9,7 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace TestApp
+namespace PayloadApp
 {
 	/// <summary>
 	/// Helper class used to start drag&drop operation and display a dragging object
