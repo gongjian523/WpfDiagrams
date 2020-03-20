@@ -127,11 +127,11 @@ namespace TestApp.Flowchart
             model.Nodes.Add(dn);
 
             model.Links.Add(new Link(cpn, PortKinds.Right, dn, PortKinds.Top));
-            dn.AddNode(cpn);
+            //dn.AddNode(cpn);
             model.Links.Add(new Link(fpn, PortKinds.Right, dn, PortKinds.Top));
-            dn.AddNode(fpn);
+            //dn.AddNode(fpn);
             model.Links.Add(new Link(dn, PortKinds.Right, otn, PortKinds.Top));
-            otn.AddNode(dn);
+            //otn.AddNode(dn);
 
             return model;
 		}

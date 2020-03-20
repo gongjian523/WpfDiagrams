@@ -84,12 +84,18 @@ namespace TestApp.Flowchart
 				_view.Children.Clear();
 
 				foreach (var node in _model.Nodes)
-					_view.Children.Add(UpdateNode(node, null));
+                {
+                    node.ClearNodes();
+                    _view.Children.Add(UpdateNode(node, null));
+                }
 
-				foreach (var link in _model.Links)
-					_view.Children.Add(CreateLink(link));
-			}
-		}
+                foreach (var link in _model.Links)
+                {
+                    _view.Children.Add(CreateLink(link));
+                    (link.Target).AddNode(link.Source);
+                }
+            }
+        }
 
 		private Node UpdateNode(FlowNode node, Node item)
 		{
@@ -278,11 +284,11 @@ namespace TestApp.Flowchart
 				var nodes = _view.Selection.Select(p => p.ModelElement as FlowNode).Where(p => p != null);
 				var links = _view.Selection.Select(p => p.ModelElement as Link).Where(p => p != null);
 
-                var links1 = _model.Links.Where(p => links.Contains(p) || nodes.Contains(p.Target));
-                foreach(var link in links1)
-                {
-                    link.Target.RemoveNode(link.Target);
-                }
+                //var links1 = _model.Links.Where(p => links.Contains(p) || nodes.Contains(p.Target));
+                //foreach(var link in links1)
+                //{
+                //    link.Target.RemoveNode(link.Target);
+                //}
 
                 _model.Nodes.RemoveRange(p => nodes.Contains(p));
 				_model.Links.RemoveRange(p => links.Contains(p));
@@ -324,7 +330,7 @@ namespace TestApp.Flowchart
 				_model.Links.Add(
 					new Link((FlowNode)source.ModelElement, (PortKinds)sourcePort.Tag, 
 						(FlowNode)target.ModelElement, (PortKinds)targetPort.Tag));
-                ((FlowNode)target.ModelElement).AddNode((FlowNode)source.ModelElement);
+                //((FlowNode)target.ModelElement).AddNode((FlowNode)source.ModelElement);
             }
 		}
 
