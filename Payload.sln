@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aga.Diagrams", "Aga.Diagrams\Aga.Diagrams.csproj", "{988E94FB-0936-4B88-ACB9-4F9CE80C8AC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayloadView", "TestApp\PayloadView.csproj", "{6ACC988F-EC35-4CAB-B79B-C6918EBE73B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayloadView", "PayloadApp\PayloadView.csproj", "{6ACC988F-EC35-4CAB-B79B-C6918EBE73B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
