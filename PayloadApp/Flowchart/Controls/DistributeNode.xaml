@@ -21,10 +21,10 @@
         </Grid.ColumnDefinitions>
         <TextBlock  Grid.ColumnSpan="6" Text="荷载分配" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <TextBlock  Grid.Row="1" Text="A" Name="_label1Tbl"  Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBox  Grid.Row="1" Grid.Column="1"  Name="_coe1Tbx" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20"/>
+        <TextBox  Grid.Row="1" Grid.Column="1"  Name="_coe1Tbx"  Text="0" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20"/>
         <TextBlock  Grid.Row="1" Grid.Column="2" Name="_1abel2Tb"  Text="B" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBox  Grid.Row="1" Grid.Column="3"  Name="_coe2Tbx" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20"/>
+        <TextBox  Grid.Row="1" Grid.Column="3"  Name="_coe2Tbx" Text="0" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20"/>
         <TextBlock  Grid.Row="1" Grid.Column="4" Name="_1abel3Tb3"  Text="C" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBox  Grid.Row="1" Grid.Column="5" Name="_coe3Tbx" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20"/>
+        <TextBox  Grid.Row="1" Grid.Column="5" Name="_coe3Tbx" Text="0" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20"/>
     </Grid>
 </UserControl>

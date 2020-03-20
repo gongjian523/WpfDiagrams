@@ -4,7 +4,7 @@
     xmlns:c="clr-namespace:Aga.Diagrams.Controls;assembly=Aga.Diagrams"
     xmlns:s="clr-namespace:PayloadApp.ShapesExample"
     xmlns:f="clr-namespace:PayloadApp.Flowchart"
-    Title="WPF Diagrams" Width="800" Height="600">
+    Title="Payload" Width="800" Height="600">
     
     <!--<TabControl>
         <TabItem Header="Flowchart">

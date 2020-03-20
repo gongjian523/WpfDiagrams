@@ -259,6 +259,24 @@ namespace PayloadApp.Flowchart
             return list;
         }
 
+        protected string _para1 = "";
+        protected string _para2 = "";
+        protected string _para3 = "";
+
+        public void SetParas(string para1, string para2, string para3)
+        {
+            _para1 = para1;
+            _para2 = para2;
+            _para3 = para3;
+        }
+
+        public void GetParas(out string para1, out string para2, out string para3)
+        {
+            para1 = _para1;
+            para2 = _para2;
+            para3 = _para3;
+        }
+
         #region INotifyPropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;

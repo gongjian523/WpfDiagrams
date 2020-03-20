@@ -19,14 +19,17 @@ namespace PayloadApp.Flowchart.Controls
     /// </summary>
     public partial class DistributeNode : UserControl
     {
-        public DistributeNode()
+        public DistributeNode(string para, string para2, string para3)
         {
             InitializeComponent();
+            _coe1Tbx.Text = para;
+            _coe2Tbx.Text = para2;
+            _coe3Tbx.Text = para3;
         }
 
         public String Coefficient()
         {
-            if (_coe1Tbx.Text == null)
+            if (_coe1Tbx.Text == null || _coe1Tbx.Text == "")
                 return "0";
             else
                 return _coe1Tbx.Text;
@@ -34,7 +37,7 @@ namespace PayloadApp.Flowchart.Controls
 
         public String Coefficient2()
         {
-            if (_coe2Tbx.Text == null)
+            if (_coe2Tbx.Text == null || _coe2Tbx.Text == "")
                 return "0";
             else
                 return _coe2Tbx.Text;
@@ -42,7 +45,7 @@ namespace PayloadApp.Flowchart.Controls
 
         public String Coefficient3()
         {
-            if (_coe3Tbx.Text == null)
+            if (_coe3Tbx.Text == null || _coe3Tbx.Text == "")
                 return "0";
             else
                 return _coe3Tbx.Text;

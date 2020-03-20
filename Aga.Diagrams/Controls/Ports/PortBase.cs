@@ -119,14 +119,8 @@ namespace Aga.Diagrams.Controls
 				Center = new Point(Double.NaN, Double.NaN);
 		}
 
-		/// <summary>
-		/// Calcluate the intersection point of the port bounds and the line between center and target point
-		/// </summary>
 		public abstract Point GetEdgePoint(Point target);
 
-		/// <summary>
-		/// Returns if the specified point is inside port sensivity area
-		/// </summary>
 		public abstract bool IsNear(Point point);
 
 

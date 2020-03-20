@@ -19,9 +19,11 @@ namespace PayloadApp.Flowchart.Controls
     /// </summary>
     public partial class FlexiblePayloadNode : UserControl
     {
-        public FlexiblePayloadNode()
+        public FlexiblePayloadNode(string para, string para2)
         {
             InitializeComponent();
+            _paraTbx.Text = para;
+            _para2Tbx.Text = para2;
         }
 
         public String Constant()
@@ -31,7 +33,7 @@ namespace PayloadApp.Flowchart.Controls
 
         public String Parameter()
         {
-            if (_paraTbx.Text == null)
+            if (_paraTbx.Text == null || _paraTbx.Text == "")
                 return "0";
             else
                 return _paraTbx.Text;
@@ -39,7 +41,7 @@ namespace PayloadApp.Flowchart.Controls
 
         public String Parameter2()
         {
-            if (_para2Tbx.Text == null)
+            if (_para2Tbx.Text == null || _para2Tbx.Text == "")
                 return "0";
             else
                 return _para2Tbx.Text;

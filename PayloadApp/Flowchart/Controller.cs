@@ -81,7 +81,36 @@ namespace PayloadApp.Flowchart
 		{
 			if (!_updateScope.IsInprogress)
 			{
-				_view.Children.Clear();
+
+                foreach (var node in _model.Nodes)
+                {
+                    if (node.Kind == NodeKinds.ConstantPayload)
+                    {
+                        ConstantPayloadNode cpn = (ConstantPayloadNode)node.SubControl;
+                        if (cpn == null)
+                            node.SetParas("0", "0", "0");
+                        else
+                            node.SetParas(cpn.Parameter(), "0", "0");
+                    }
+                    else if(node.Kind == NodeKinds.FlexiblePaylaod)
+                    {
+                        FlexiblePayloadNode fpn = (FlexiblePayloadNode)node.SubControl;
+                        if(fpn == null)
+                            node.SetParas("0", "0", "0");
+                        else
+                            node.SetParas(fpn.Parameter(), fpn.Parameter2(), "0");
+                    }
+                    else if(node.Kind == NodeKinds.Distribute)
+                    {
+                        DistributeNode dn = (DistributeNode)node.SubControl;
+                        if (dn == null)
+                            node.SetParas("0", "0", "0");
+                        else
+                            node.SetParas(dn.Coefficient(), dn.Coefficient2(), dn.Coefficient3());
+                    }
+                }
+
+                _view.Children.Clear();
 
 				foreach (var node in _model.Nodes)
                 {
@@ -162,7 +191,8 @@ namespace PayloadApp.Flowchart
             }
             else if (node.Kind == NodeKinds.ConstantPayload)
             {
-                var cpn = new ConstantPayloadNode();
+                node.GetParas(out string para1, out string para2, out string para3);
+                var cpn = new ConstantPayloadNode(para1);
                 node.SubControl = cpn;
 
                 var ui = new Border();
@@ -174,7 +204,8 @@ namespace PayloadApp.Flowchart
             else
             if (node.Kind == NodeKinds.FlexiblePaylaod)
             {
-                var fpn= new FlexiblePayloadNode();
+                node.GetParas(out string para1, out string para2, out string para3);
+                var fpn= new FlexiblePayloadNode(para1, para2);
                 node.SubControl = fpn;
 
                 var ui = new Border();
@@ -185,7 +216,8 @@ namespace PayloadApp.Flowchart
             }
             else if (node.Kind == NodeKinds.Distribute)
             {
-                var dn = new DistributeNode();
+                node.GetParas(out string para1, out string para2, out string para3);
+                var dn = new DistributeNode(para1, para2, para3);
                 node.SubControl = dn;
 
                 var ui = new Border();

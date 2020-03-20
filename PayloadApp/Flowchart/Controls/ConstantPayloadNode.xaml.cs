@@ -19,9 +19,10 @@ namespace PayloadApp.Flowchart.Controls
     /// </summary>
     public partial class ConstantPayloadNode : UserControl
     {
-        public ConstantPayloadNode()
+        public ConstantPayloadNode(string para)
         {
             InitializeComponent();
+            _paraTbx.Text = para;
         }
 
         public String Constant()
@@ -29,21 +30,14 @@ namespace PayloadApp.Flowchart.Controls
             return _constTbl.Text;         
         }
 
-        private string _parameter = "";
         public String Parameter()
         {
             if (_paraTbx.Text == null || _paraTbx.Text == "")
                 return "0";
             else
             {
-                _parameter = _paraTbx.Text;
-                return _parameter;
+                return _paraTbx.Text;
             }     
-        }
-
-        public void SetParameter()
-        {
-            _paraTbx.Text = _parameter;
         }
     }
 }
